@@ -1,3 +1,3 @@
 # hardeep0598.github.io
 
-Checkout my portfolio at https://hardeepkaur.me
+Checkout my portfolio at  https://www.thehkfolio.tech/
