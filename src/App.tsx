@@ -790,7 +790,7 @@ export default function App() {
               Technical Writing
             </h2>
             <p className="max-w-xl mx-auto text-xs sm:text-sm text-slate-400 font-sans leading-relaxed">
-              Deep dives into system internals, auth gateways, and smart-home topologies. Originally published on my{" "}
+              Deep dives into system internals, auth gateways, and smart-home topologies. Find other articles originally published on my{" "}
               <a 
                 href="https://medium.com/@hardeep-kaur" 
                 target="_blank" 
