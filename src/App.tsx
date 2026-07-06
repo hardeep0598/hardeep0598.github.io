@@ -396,7 +396,7 @@ export default function App() {
               {/* Image container */}
               <div className="relative rounded-2xl overflow-hidden border border-slate-800 bg-slate-950/80 w-full h-full z-10 transition-transform duration-300 group-hover:-translate-x-1 group-hover:-translate-y-1">
                 <img
-                  src="public/assets/Hardeep-Kaur.jpg"
+                  src="assets/Hardeep-Kaur.jpg"
                   alt="Hardeep Kaur"
                   referrerPolicy="no-referrer"
                   className="w-full h-full object-cover grayscale brightness-95 group-hover:grayscale-0 group-hover:brightness-105 transition-all duration-500 scale-100 group-hover:scale-105"
