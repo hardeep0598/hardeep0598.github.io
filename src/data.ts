@@ -2,7 +2,7 @@ import { TechSkill, ExperienceItem, ProjectItem, BlogPost, ArtWork, CosmosNote, 
 
 export const skillsData: TechSkill[] = [
   { name: "Distributed Systems", category: "Backend/Systems", level: 5, description: "Designed high-throughput APIs, queue processing buffers, and low-latency client connectors." },
-  { name: "Golang / Go", category: "Languages", level: 5, description: "Highly proficient in high-concurrency patterns, channels design, and lightweight backends." },
+  { name: "Golang / Kotlin", category: "Languages", level: 5, description: "Highly proficient in high-concurrency patterns, channels design, and lightweight backends." },
   { name: "C++ / Java", category: "Languages", level: 4, description: "Low-level system integrations, memory-safe execution, and high-performance threading interfaces." },
   { name: "Android Platform", category: "Mobile/Frontend", level: 5, description: "Deep understanding of Android internals, custom rendering engines, and graphics layout profiles." },
   { name: "System Design", category: "Backend/Systems", level: 5, description: "Architected multi-region transactional systems, rate limiters, and highly available cluster networks." },
