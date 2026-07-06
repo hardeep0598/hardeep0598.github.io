@@ -785,32 +785,20 @@ export default function App() {
       >
         <div className="space-y-12">
           <div className="space-y-2 text-center">
-            <span className="font-mono text-[10px] text-blue-400 tracking-widest uppercase block">
-              04_TECHNICAL_WRITING{" "}
-            </span>
+            <span className="font-mono text-[10px] text-blue-400 tracking-widest uppercase block">04_TECHNICAL_WRITING</span>
             <h2 className="font-display text-3xl md:text-4xl font-bold tracking-tight text-slate-100">
               Technical Writing
             </h2>
             <p className="max-w-xl mx-auto text-xs sm:text-sm text-slate-400 font-sans leading-relaxed">
-              Deep dives into system internals, auth gateways, and some other learnings. Originally published on my {" "}
-              <a
-                href="https://medium.com/@hardeep-kaur"
-                target="_blank"
-                rel="noreferrer"
+              Deep dives into system internals, auth gateways, and smart-home topologies. Originally published on my{" "}
+              <a 
+                href="https://medium.com/@hardeep-kaur" 
+                target="_blank" 
+                rel="noreferrer" 
                 className="text-blue-400 hover:text-blue-300 underline underline-offset-4 transition-colors font-medium"
               >
                 Medium Profile
-              </a>{" "}
-              or {" "}
-              <a
-                href="https://hardeep0598.github.io/"
-                target="_blank"
-                rel="noreferrer"
-                className="text-blue-400 hover:text-blue-300 underline underline-offset-4 transition-colors font-medium"
-              >
-                Personal Blog
-              </a>
-              .
+              </a>.
             </p>
           </div>
 
