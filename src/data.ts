@@ -346,7 +346,7 @@ export const personalInterestsData = {
       medium: "Pencil & Ink Sketch",
       description: "A hand-drawn pencil and ink sketch of Gaara, focusing on the character's signature intense expression and cracked sand armor texture.",
       year: "2024",
-      imageUrl: "public/assets/gara.jpeg",
+      imageUrl: "/assets/gara.jpeg",
       category: "Sketches" as const
     },
     {
@@ -355,7 +355,7 @@ export const personalInterestsData = {
       medium: "Digital Illustration (Tablet)",
       description: "A vibrant digital sketch of potted indoor plants and flowers on a shelf, experimenting with clean linework and bold block coloring.",
       year: "2025",
-      imageUrl: "/public/assets/urge.jpeg",
+      imageUrl: "/assets/urge.jpeg",
       category: "Digital" as const
     },
     {
@@ -364,7 +364,7 @@ export const personalInterestsData = {
       medium: "Pencil Sketch",
       description: "A detailed hand-drawn pencil sketch of Gohan, highlighting sharp, classic anime linework and deep shading.",
       year: "2024",
-      imageUrl: "/public/assets/gohan.jpeg",
+      imageUrl: "/assets/gohan.jpeg",
       category: "Sketches" as const
     },
     {
@@ -373,7 +373,7 @@ export const personalInterestsData = {
       medium: "Digital Painting",
       description: "A calm digital painting showing a full moon suspended in a starry night, reflecting a soft trail of light over gentle ocean waves.",
       year: "2025",
-      imageUrl: "/public/assets/Nighty.jpeg",
+      imageUrl: "/assets/Nighty.jpeg",
       category: "Digital" as const
     },
      {
@@ -382,7 +382,7 @@ export const personalInterestsData = {
       medium: "Digital Painting",
       description: "Stuck in an over-thinking zone.",
       year: "2025",
-      imageUrl: "/public/assets/art.jpeg",
+      imageUrl: "/assets/art.jpeg",
       category: "Digital" as const
     },
     {
@@ -391,7 +391,7 @@ export const personalInterestsData = {
       medium: "Digital Painting",
       description: "Stuck with you.",
       year: "2025",
-      imageUrl: "/public/assets/walk.jpeg",
+      imageUrl: "/assets/walk.jpeg",
       category: "Digital" as const
     },
     {
@@ -400,35 +400,8 @@ export const personalInterestsData = {
       medium: "Digital Painting",
       description: "Stuck in an over-thinking zone.",
       year: "2025",
-      imageUrl: "/public/assets/doodles.jpeg",
+      imageUrl: "/assets/doodles.jpeg",
       category: "Digital" as const
-    },
-    {
-      id: "art-1",
-      title: "The Pillars of Creation",
-      medium: "Generative Canvas Sketch",
-      description: "An abstract generative depiction of the stellar nursery, utilizing mathematical noise vectors to simulate the flow of cosmic dust and gas clouds in deep space.",
-      year: "2025",
-      imageUrl: "https://images.unsplash.com/photo-1462331940025-496dfbfc7564?q=80&w=800&auto=format&fit=crop",
-      category: "Generative" as const
-    },
-    {
-      id: "art-2",
-      title: "Singularity's Pull",
-      medium: "Ink and Fine-Liner Sketch",
-      description: "A hand-drawn sketch detailing the warping of spacetime around a Schwarzschild black hole. Drawn with high-density fine-liners to represent accretion disk shear lines.",
-      year: "2024",
-      imageUrl: "https://images.unsplash.com/photo-1506318137071-a8e063b4bec0?q=80&w=800&auto=format&fit=crop",
-      category: "Sketches" as const
-    },
-    {
-      id: "art-3",
-      title: "Andromeda Rising",
-      medium: "Astrophotography (Stack of 40 exposures)",
-      description: "My capture of the Andromeda Galaxy (M31) from a Class 3 dark sky site, processed using deep-sky stacking software to highlight the dust lanes and satellite galaxies.",
-      year: "2025",
-      imageUrl: "https://images.unsplash.com/photo-1543722530-d2c3201371e7?q=80&w=800&auto=format&fit=crop",
-      category: "Astrophotography" as const
     }
   ],
   notebook: [
