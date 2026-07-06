@@ -114,7 +114,7 @@ export default function CommandPalette({ onNavigate }: CommandPaletteProps) {
   // Keyboard shortcut listener
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
-      if ((e.metaKey || e.ctrlKey) && e.key === "k") {
+      if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === "k") {
         e.preventDefault();
         setIsOpen((prev) => !prev);
       } else if (e.key === "Escape") {
@@ -202,7 +202,7 @@ export default function CommandPalette({ onNavigate }: CommandPaletteProps) {
                   className="bg-transparent text-slate-200 text-sm focus:outline-none w-full placeholder-slate-600"
                   autoFocus
                 />
-                <button 
+                <button
                   onClick={() => setIsOpen(false)}
                   className="text-[10px] text-slate-500 hover:text-slate-300 border border-slate-900 rounded px-1.5 py-0.5"
                 >
@@ -219,11 +219,15 @@ export default function CommandPalette({ onNavigate }: CommandPaletteProps) {
                     return (
                       <div
                         key={cmd.id}
+                        ref={(el) => {
+                          if (isSelected && el) {
+                            el.scrollIntoView({ block: "nearest" });
+                          }
+                        }}
                         onClick={cmd.action}
                         onMouseEnter={() => setSelectedIndex(index)}
-                        className={`flex items-center justify-between px-3 py-2 rounded-lg cursor-pointer transition-all ${
-                          isSelected ? "bg-blue-600/10 text-blue-200 border border-blue-500/20" : "text-slate-400 hover:text-slate-300 border border-transparent"
-                        }`}
+                        className={`flex items-center justify-between px-3 py-2 rounded-lg cursor-pointer transition-all ${isSelected ? "bg-blue-600/10 text-blue-200 border border-blue-500/20" : "text-slate-400 hover:text-slate-300 border border-transparent"
+                          }`}
                       >
                         <div className="flex items-center space-x-3 text-xs text-left">
                           <IconComp className={`w-4 h-4 shrink-0 ${isSelected ? "text-blue-400" : "text-slate-500"}`} />

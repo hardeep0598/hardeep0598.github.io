@@ -4,7 +4,7 @@ import { projectsData } from "../data";
 import { Terminal, Cpu, ArrowRight, ExternalLink, GitBranch, ShieldAlert, BadgeCheck, Network } from "lucide-react";
 
 export default function ProjectsSection() {
-  const [activeProjId, setActiveProjId] = useState<string>("pdf-rendering");
+  const [activeProjId, setActiveProjId] = useState<string>("pdf-thumbnail-preview");
 
   const activeProj = projectsData.find((p) => p.id === activeProjId) || projectsData[0];
 
@@ -18,11 +18,10 @@ export default function ProjectsSection() {
             <button
               key={proj.id}
               onClick={() => setActiveProjId(proj.id)}
-              className={`w-full text-left p-5 rounded-xl border transition-all cursor-pointer block ${
-                isActive
+              className={`w-full text-left p-5 rounded-xl border transition-all cursor-pointer block ${isActive
                   ? "bg-blue-600/10 border-blue-500/40 shadow-md"
                   : "bg-slate-950/25 border-slate-900 hover:border-slate-800"
-              }`}
+                }`}
             >
               <div className="space-y-1">
                 <span className={`text-[10px] font-mono tracking-wider block uppercase ${isActive ? "text-blue-400" : "text-slate-500"}`}>
@@ -52,7 +51,7 @@ export default function ProjectsSection() {
             className="bg-slate-950/40 border border-slate-900 rounded-xl p-6 md:p-8 space-y-6"
           >
             {/* Header */}
-            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-slate-900 pb-5">
+            <div className="flex flex-col border-b border-slate-900 pb-5 text-left">
               <div className="space-y-1">
                 <span className="text-[10px] font-mono px-2.5 py-1 rounded bg-slate-900 border border-slate-800 text-slate-400 uppercase tracking-widest inline-block">
                   {activeProj.category}
@@ -62,27 +61,15 @@ export default function ProjectsSection() {
                 </h3>
                 <p className="text-xs text-blue-400 font-mono italic">{activeProj.subtitle}</p>
               </div>
-
-              {/* Action Buttons */}
-              <div className="flex items-center gap-2">
-                <button className="px-3 py-1.5 rounded bg-slate-900 hover:bg-slate-800 border border-slate-800 text-[11px] font-mono text-slate-400 hover:text-slate-200 transition-colors flex items-center space-x-1 cursor-pointer">
-                  <GitBranch className="w-3.5 h-3.5 text-purple-400" />
-                  <span>GitHub</span>
-                </button>
-                <button className="px-3 py-1.5 rounded bg-blue-500/10 hover:bg-blue-500/20 border border-blue-500/30 text-[11px] font-mono text-blue-400 hover:text-blue-200 transition-colors flex items-center space-x-1 cursor-pointer">
-                  <ExternalLink className="w-3.5 h-3.5" />
-                  <span>Interactive Demo</span>
-                </button>
-              </div>
             </div>
 
             {/* Description */}
-            <p className="text-xs md:text-sm text-slate-300 leading-relaxed">
+            <p className="text-xs md:text-sm text-slate-300 leading-relaxed text-left">
               {activeProj.description}
             </p>
 
             {/* Structured Details: Problem */}
-            <div className="space-y-2 bg-slate-950 p-4 rounded-lg border border-slate-900">
+            <div className="space-y-2 bg-slate-950 p-4 rounded-lg border border-slate-900 text-left">
               <div className="flex items-center space-x-2 text-[10px] text-red-400 font-mono font-bold uppercase tracking-wider">
                 <ShieldAlert className="w-3.5 h-3.5" />
                 <span>The Challenge</span>
@@ -102,21 +89,25 @@ export default function ProjectsSection() {
                 <span className="text-[9px] text-slate-600">ARCH_BLUEPRINT</span>
               </div>
 
-              {/* Visualizing architectural flows using CSS blocks */}
-              <div className="flex flex-col sm:flex-row items-center justify-center gap-2 pt-2 pb-1 text-[10px] text-slate-300">
-                {activeProj.architecture.map((step, sIdx) => (
-                  <React.Fragment key={sIdx}>
-                    <div className="flex flex-col items-center bg-slate-950 border border-slate-800 rounded px-3 py-2.5 text-center w-full sm:w-32 hover:border-blue-500/50 transition-all shadow-inner">
-                      <span className="text-slate-600 block text-[8px] mb-1">STAGE-0{sIdx + 1}</span>
-                      <span className="font-semibold text-slate-300 tracking-tight leading-tight">{step.split(":")[0]}</span>
-                    </div>
-                    {sIdx < activeProj.architecture.length - 1 && (
-                      <div className="text-slate-600 sm:rotate-0 rotate-90 py-1 sm:py-0">
-                        <ArrowRight className="w-4 h-4" />
+              {/* Expanded, highly legible architecture blocks */}
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-2 pb-1 text-[10px] text-slate-300">
+                {activeProj.architecture.map((step, sIdx) => {
+                  const parts = step.split(":");
+                  const title = parts[0]?.trim() || "Stage";
+                  const desc = parts[1]?.trim() || "";
+                  return (
+                    <div key={sIdx} className="flex flex-col bg-slate-950/70 border border-slate-900/60 rounded-lg p-4 text-left hover:border-blue-500/20 transition-all shadow-inner relative">
+                      <div className="absolute top-2 right-3 text-slate-700 text-[8px] font-mono">STAGE-0{sIdx + 1}</div>
+                      <div className="flex items-center space-x-1.5 mb-1.5">
+                        <div className="w-1.5 h-1.5 rounded-full bg-blue-500" />
+                        <span className="font-semibold text-slate-200 tracking-tight leading-tight uppercase font-mono text-[10.5px]">{title}</span>
                       </div>
-                    )}
-                  </React.Fragment>
-                ))}
+                      <p className="font-sans text-slate-400 text-[10.5px] leading-relaxed">
+                        {desc}
+                      </p>
+                    </div>
+                  );
+                })}
               </div>
             </div>
 

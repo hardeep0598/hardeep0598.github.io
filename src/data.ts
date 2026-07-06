@@ -12,7 +12,7 @@ export const skillsData: TechSkill[] = [
 export const experienceData: ExperienceItem[] = [
   {
     id: "bloomberg",
-    company: "Bloomberg",
+    company: "Bloomberg Ireland",
     role: "Senior Software Engineer (Incoming)",
     period: "August 2026",
     location: "Dublin, Ireland",
@@ -134,68 +134,68 @@ export const experienceData: ExperienceItem[] = [
 
 export const projectsData: ProjectItem[] = [
   {
-    id: "pdf-rendering",
-    title: "Android PDF Rendering Engine",
-    subtitle: "Low-level performance optimization on AOSP",
-    description: "Re-engineered core thread scheduling and resource recycling profiles in the Android Open Source Project (AOSP) to enable butter-smooth rendering of complex PDF document components.",
-    problem: "Existing document utilities on Android suffered massive memory spikes and stuttering frame rates during swift zooms on large files.",
+    id: "pdf-thumbnail-preview",
+    title: "Jetpack PDF Viewer & Performance Engine",
+    subtitle: "Memory pooling, thumbnail previews, and backwards-compatibility (API 21+)",
+    description: "Designed and delivered the thumbnail preview architecture and extended backward compatibility to Android API 21+ for the entire Jetpack PDF library, enabling Google Drive and Docs integration while maintaining butter-smooth rendering.",
+    problem: "Enabling smooth document seeks and previews in heavy, vector-rich PDFs (>100 pages) without triggering aggressive JVM GC spikes and stuttering layout performance on lower-tier Android devices.",
     architecture: [
-      "Dynamic bitmap pre-caching for surrounding layout pages.",
-      "Offloading heavy vector math to native background threads via NDK.",
-      "GPU-accelerated hardware layers allocation for smooth scale animations."
+      "Bitmap Pool: Recycles out-of-view canvas layouts.",
+      "Backport Layer: Mimics modern layout APIs down to API 21+.",
+      "FastScroller: Thread-isolated accessibility announcements."
     ],
-    techStack: ["Kotlin", "C++", "Android NDK", "AOSP Rendering API", "Systrace"],
-    challenges: "Avoiding garbage-collection pauses during active zoom gestures on lower-spec hardware.",
-    outcome: "Reduced peak memory usage by 35% and stabilized document scrolls to a locked 60 FPS.",
+    techStack: ["Kotlin", "Java", "Android SDK", "Jetpack", "JaCoCo", "Systrace", "C++ NDK"],
+    challenges: "Achieving backward compatibility to API 21+ while minimizing binary footprints and retaining thread-safe native C++ rendering wrappers.",
+    outcome: "Reduced peak memory usage by 35%, stripped 35 KB from binary size, and decreased document seek latency by 25%.",
     category: "Android"
   },
   {
-    id: "investment-apis",
-    title: "Investment APIs & Concurrency Gateway",
-    subtitle: "High-throughput financial basket transactions",
-    description: "A robust transactional gateway engineered in Go to handle high-concurrency order placement and secure portfolio rebalancing across multiple external brokerages.",
-    problem: "Heavy load spikes during market-open led to connection timeouts and ambiguous transaction states from partner servers.",
+    id: "mdns-smart-home",
+    title: "Smart-Home Hub Onboarding Gateway",
+    subtitle: "Zero-touch mDNS activation and multicast packet deduplication (OOBE 2.0)",
+    description: "Designed and integrated a highly resilient local network mDNS discovery architecture for third-party screenless smart-home hubs (OOBE 2.0), incorporating automated NanoHTTPD setups and reliable multicast handshakes.",
+    problem: "Network discovery pipelines collapsed in field testing when multiple smart hubs on the same subnet broadcasted duplicate advertisements, exhausting the mobile setup app's event loop and causing client crashes.",
     architecture: [
-      "Idempotency token registry using distributed Redis locks.",
-      "Asynchronous retry buffers with jitter-controlled backoffs.",
-      "Dynamic rate-limiting buckets adjusted by active broker response latencies."
+      "NanoHTTPD: Tiny device-side setup server on the hub.",
+      "HubAdvertisingClient: Dynamic port collision negotiation.",
+      "Sliding Window: Memory-bounded packet deduplication buffer."
     ],
-    techStack: ["Golang", "Redis", "PostgreSQL", "gRPC", "Docker"],
-    challenges: "Preventing duplicate orders when API connections dropped in mid-flight.",
-    outcome: "Successfully processed thousands of portfolio buys per second with order errors dropping below 0.1%.",
-    category: "Backend"
-  },
-  {
-    id: "telemetry-logging",
-    title: "High-Performance Telemetry & Data Logging",
-    subtitle: "Real-time system state monitoring",
-    description: "Designed a lightweight, memory-efficient diagnostic logging library in Go to capture thread execution timelines and memory allocation maps across production microservices.",
-    problem: "Standard logging frameworks added excessive locking overhead, degrading service performance under high requests.",
-    architecture: [
-      "Lock-free ring-buffer queue to hand off logs to background writers.",
-      "Asynchronous batching flush to memory-mapped local storage.",
-      "Passive backpressure throttling to discard debug spans under high system load."
-    ],
-    techStack: ["Golang", "Linux Epoll", "mmap", "Benchmark Diagnostics"],
-    challenges: "Logging microsecond execution metrics without causing CPU cache misses on critical business logic threads.",
-    outcome: "Achieved telemetry gathering with < 1% CPU utilization, handling over 500,000 logs/sec locally.",
+    techStack: ["Java", "Kotlin", "mDNS (DNS-SD)", "NanoHTTPD", "Wireshark", "GMS Core"],
+    challenges: "Sustaining reliable, secure handshakes across diverse residential local area subnets without user pin-entry or manual Wi-Fi switching.",
+    outcome: "Completely resolved thread exhaustion loops on overlapping broadcasts, reducing average partner integration time by 40% and increasing discovery success by 40%.",
     category: "Distributed Systems"
   },
   {
-    id: "astronomy-visualizer",
-    title: "Astronomy Notebook & Orbit Simulator",
-    subtitle: "Physics-inspired browser playground",
-    description: "An elegant, interactive 2D orbital gravity simulation created to calculate and visually paint planetary movements, orbits, and planetary attractions in real-time.",
-    problem: "Standard physics calculations in browsers easily bottleneck the main UI thread during multi-body simulations.",
+    id: "otp-gateway",
+    title: "Defensive Financial OTP & SSO Service",
+    subtitle: "Mitigating SMS toll fraud and protecting session token transitions at scale",
+    description: "Engineered from scratch a high-availability, zero-trust OTP and Single Sign-On (SSO) gateway at Smallcase, handling over 500,000 monthly transactions and defending core financial APIs from volumetric attacks.",
+    problem: "Fintech APIs suffer continuous automated bot abuse and SMS pump fraud, risking massive toll carrier charges and insecure session handover replays.",
     architecture: [
-      "Run run-loop calculations inside light background Web Workers.",
-      "Utilize Verlet integration for high-accuracy path calculations.",
-      "Render orbits fluidly on high-DPI HTML Canvas overlays."
+      "JA3 Edge: TLS client handshake fingerprinting.",
+      "Leaky Bucket: Redis-backed IP rate-limits.",
+      "Transient Cache: Short-lived token memory with strict TTLs."
     ],
-    techStack: ["React", "HTML5 Canvas", "Web Workers", "Verlet Physics", "Tailwind CSS"],
-    challenges: "Ensuring orbital paths remain stable over extended runs without cumulative floating-point drift.",
-    outcome: "Allows visitors to place custom mass hubs in space and interactively observe real-time gravitational slingshots at a smooth 60 FPS.",
+    techStack: ["Node.js", "Express.js", "Redis", "AWS WAF", "CloudFront", "reCAPTCHA", "Go"],
+    challenges: "Blocking distributed pump bots by over 90% without introducing login friction or false positives for legitimate retail investors.",
+    outcome: "Processed 500,000+ monthly requests at 99.99% system reliability, cutting fraudulent account creations by 75% and saving $15,000 USD annually.",
     category: "System Design"
+  },
+  {
+    id: "smartphone-muon-detector",
+    title: "Smartphone Cosmic Ray Muon Detector",
+    subtitle: "No-equipment particle physics experiment using CMOS camera sensors",
+    description: "A self-contained experimental app concept that leverages standard mobile camera CMOS silicon sensors to capture high-energy atmospheric muon strikes from cosmic rays in real-time.",
+    problem: "Cosmic ray particles (muons) constantly shower the Earth but are invisible. Professional cloud chambers and scintillators are expensive and inaccessible to everyday space enthusiasts.",
+    architecture: [
+      "Sensor Masking: Complete visible light block via black tape.",
+      "Frame Analysis: Real-time bright pixel scanning in dark frames.",
+      "Event Logging: Recording charge trails and energy histograms."
+    ],
+    techStack: ["Kotlin", "Android Camera2 API", "Vulkan / GPU Shaders", "Statistical Poisson Models"],
+    challenges: "Differentiating high-energy particle ionization trails from thermal sensor noise (hot pixels) on consumer hardware.",
+    outcome: "Allows users to turn a smartphone, black tape, and a dark room into a functional particle detector logging 2-3 muon strikes per minute.",
+    category: "Cosmos"
   }
 ];
 
@@ -203,43 +203,59 @@ export const blogPosts: BlogPost[] = [
   {
     id: "scaling-otp-gateway",
     title: "Scaling One-Time Passwords: A 99.99% Reliable Auth Gateway",
-    excerpt: "How we designed a custom OTP and SSO service to support over 500k monthly requests, mitigate bot networks by 90%, and reduce fraudulent registrations.",
+    excerpt: "How we designed a custom secure OTP service at Smallcase to handle 500k monthly requests, mitigate SMS pump fraud by 90%, and protect session handovers.",
     content: `When scaling consumer platforms or fintech apps, user authentication is the single most critical gateway. If login drops, your entire business is effectively down.
 
-In my tenure at Smallcase, we designed and deployed a custom, secure OTP (One-Time Password) service from scratch to handle over 500,000 monthly authentication requests across SMS, email, and SSO.
+During my tenure at Smallcase, we designed and deployed a custom, secure OTP (One-Time Password) service from scratch to handle over 500,000 monthly authentication requests across SMS, email, and SSO. To ensure high availability and protect our infrastructure from financial and security risks, we focused on two major engineering milestones:
 
 ### 1. Defending Against Distributed SMS Pump Attacks
-SMS pump fraud occurs when automated botnets trigger massive spikes of OTP requests to high-cost premium carrier destinations, running up thousands of dollars in toll charges. 
+SMS pump fraud occurs when automated botnets trigger massive spikes of OTP requests to high-cost premium carrier destinations, running up thousands of dollars in toll charges.
 
-To mitigate this abuse by over 90% and save $15,000 USD in infrastructure overhead:
-* **JA3 Fingerprinting**: We analyzed incoming TLS handshakes to spot automated bots bypassing standard browser headers.
-* **IP Reputation & Geo-Fencing**: Integrated AWS WAF and CloudFront rules to throttle suspicious request frequencies dynamically.
-* **Leaky Bucket Throttling**: Designed custom rate-limiting queues in Redis mapped to both device signatures and destination phone subnets.
+To mitigate this abuse by over 90% and save $15,000 USD in infrastructure overhead, we implemented a layered defense strategy at both the network edge and the application tier:
+
+* **JA3 Fingerprinting**: We analyzed incoming TLS handshakes to identify the cryptographic signatures of automated bots, dropping requests that attempted to bypass standard browser headers.
+* **IP Reputation & Geo-Fencing**: We integrated AWS WAF and CloudFront rules to monitor incoming traffic trends and throttle suspicious request frequencies dynamically based on risk profiles.
+* **Leaky Bucket Throttling**: We designed custom rate-limiting queues in Redis. These throttles were mapped not just to individual user accounts, but directly to device signatures and destination phone subnets to catch distributed attacks.
 
 ### 2. Safeguarding Session Transitions
-SSO transitions and token handshakes must happen atomically. By leveraging a high-performance Redis cache for transient verification tokens with strict TTL expirations, we ensured 99.99% uptime while protecting customer account creations from replay attacks.`,
+Single Sign-On (SSO) transitions and token handshakes must happen atomically. If a session handover fails mid-stream, it creates a terrible user experience; if it is intercepted, it compromises account security.
+
+To ensure seamless, highly secure session handovers:
+* **Transient Token Cache**: We leveraged a high-performance Redis cache to store and manage transient verification tokens.
+* **Strict TTL Expirations**: Every token was bound to a strict, short-lived Time-To-Live (TTL) expiration window. Once used or expired, the token was instantly evicted from memory.
+
+**The Engineering Win**: This fast, synchronous verification layer protected customer account creations from replay attacks while keeping our authentication gateway operating at 99.99% uptime.`,
     category: "System Design",
     readTime: "7 min read",
     date: "May 12, 2024"
   },
   {
     id: "android-pdf-rendering",
-    title: "Android PDF Internals: Memory Pooling & High-Fidelity Rendering",
-    excerpt: "A deep dive into vector rasterization, bitmap caching, and rendering layout performance optimization within the Jetpack PDF library.",
-    content: `Most developers assume displaying a PDF document on mobile is as simple as launching an intent. But if you're building a native document experience within the Jetpack PDF library, you quickly encounter extreme hardware limits.
+    title: "Android PDF Internals: Mastering Memory Pooling & High-Fidelity Rendering",
+    excerpt: "Re-engineering the Android PDF rendering pipeline inside the Jetpack PDF library to achieve a locked 60 FPS scroll and 35% peak memory reduction.",
+    content: `Most developers assume that displaying a PDF on a mobile device is as simple as launching a system intent. However, if you are building a native, interactive document viewer, you quickly run into severe hardware constraints.
 
-In large, vector-rich PDFs (exceeding 100 pages), swift zooming and panning can instantly trigger massive memory allocation spikes, resulting in Garbage Collection (GC) pauses and stuttering frame rates.
+In large, vector-rich PDFs (especially those exceeding 100 pages), swift zooming and panning can instantly trigger massive memory allocation spikes. On Android, this leads to aggressive Garbage Collection (GC) pauses and stuttering frame rates.
 
-Here are the key systems optimizations we implemented to achieve a locked 60 FPS scroll and a 35% reduction in peak memory usage:
+To solve this, we re-engineered the rendering pipeline, achieving a locked 60 FPS scroll and a 35% reduction in peak memory usage through two primary optimizations:
 
-### 1. The Power of Bitmap Pooling
-Allocating a high-resolution bitmap on every zoom change is a performance killer. Instead, we established a **Bitmap Pool**. 
-* When a page scrolls out of view, its bitmap isn't garbage collected; it is marked as "recyclable."
-* When a new page enters the viewport, we fetch a matching bitmap structure from the pool and re-render the vector content directly onto it.
-* This completely bypasses expensive runtime heap allocations.
+### 1. Eliminating Runtime Allocations with Bitmap Pooling
+Allocating a brand-new, high-resolution bitmap every time a user pinches, zooms, or pans is a performance killer. Bitmaps are incredibly heavy objects; constantly creating and destroying them forces the JVM to run stop-the-world garbage collection cycles.
 
-### 2. FastScroller Accessibility
-Accessibility is a core pillar of system software. By making the FastScroller screen reader-friendly, we enabled visually impaired users to seamlessly navigate heavy documents with precise page spoken feedback, making the Android PDF viewer highly compliant with worldwide standards.`,
+To bypass this overhead, we implemented a Bitmap Pool pattern:
+* **The Recycle Loop**: When a PDF page scrolls out of the active viewport, its underlying bitmap is not released for garbage collection. Instead, it is retained and marked as "recyclable" within an in-memory pool.
+* **In-Place Re-rendering**: When a new page enters the screen, the rendering engine avoids a fresh memory allocation. Instead, it pulls a bitmap of matching dimensions from the pool and re-renders the new vector content directly onto the existing memory canvas.
+
+**The Engineering Win**: By recycling memory block allocations rather than churn-releasing them, we completely eliminated runtime heap allocation spikes during rapid scrolling.
+
+### 2. Accessible Architecture: Smarter FastScroller Navigation
+System software should never sacrifice accessibility for raw performance. A major goal of this overhaul was ensuring that heavy document navigation remained smooth and intuitive for all users, including those relying on screen readers.
+
+We refactored the FastScroller component to deeply integrate with Android's accessibility framework:
+* **Real-Time Spoken Feedback**: As a user drags the fast-scroll thumb through a 500-page document, the system dynamically intercepts the touch event loop and announces precise, localized page markers in real time.
+* **Deterministic Focus**: Instead of overwhelming screen readers with continuous layout updates during rapid scrolling, the system intelligently debounces announcements. This provides clear, high-fidelity audio feedback without lagging the UI thread.
+
+**The Engineering Win**: This approach ensures the application meets global accessibility standards without introducing main-thread stutter, making heavy document exploration accessible to everyone.`,
     category: "Engineering Lessons",
     readTime: "9 min read",
     date: "Jan 18, 2025"
@@ -247,19 +263,26 @@ Accessibility is a core pillar of system software. By making the FastScroller sc
   {
     id: "mdns-discovery-stability",
     title: "mDNS Discovery Stability: Debugging Broadcasts in Local Topologies",
-    excerpt: "Resolving discovery race conditions and memory leaks when broadcasting setup ports via HubAdvertisingClient and NanoHTTPD.",
-    content: `Setting up screenless smart-home devices is notorious for flaky user experiences. During the GHP 3P Hub Activation (OOBE 2.0) project at Google, we aimed to completely automate hub onboarding using local mDNS (Multicast DNS) broadcasting.
+    excerpt: "How we resolved subnet packet collisions and infinite parsing loops during screenless smart-home hub onboarding (OOBE 2.0) at Google.",
+    content: `Setting up screenless smart-home devices is notorious for flaky, unpredictable user experiences. During the GHP 3P Hub Activation (OOBE 2.0) project, our goal was to remove all manual friction and completely automate the hub onboarding flow using local Multicast DNS (mDNS) broadcasting.
 
-The architecture was simple:
-1. The smart hub hosts a lightweight device-side setup server using **NanoHTTPD**.
-2. A custom **HubAdvertisingClient** broadcasts the server's port and discovery codes using DNS-SD (Service Discovery) over mDNS.
-3. The setup app discovers this broadcast and automatically initiates the secure handshake.
+The initial architecture was designed around a clean, lightweight discovery loop:
+* **The Device-Side Server**: The smart hub spins up an embedded, lightweight setup server using NanoHTTPD.
+* **The Discovery Broadcast**: A custom HubAdvertisingClient begins broadcasting the server's operational port and unique discovery codes across the local network using DNS-Based Service Discovery (DNS-SD) over mDNS.
+* **The Automated Handshake**: The mobile setup app listens for these specific network broadcasts, intercepts the connection parameters, and automatically initiates a secure provisioning handshake without requiring the user to type in pins or switch Wi-Fi networks.
 
 ### The Subnet Collision Challenge
-During field testing, we noticed a critical crash occurring when multiple smart hubs with the same partner ID were active on the exact same local subnet. The incoming broadcast packets triggered a race condition in the discovery parser, leading to infinite lookup loops and thread exhaustion.
+While the architecture worked flawlessly in isolated lab environments, field testing exposed a critical edge case. When multiple smart hubs sharing the exact same partner ID were powered on simultaneously within the same local subnet, the discovery pipeline completely collapsed.
+
+The flood of identical, overlapping incoming broadcast packets triggered a severe race condition in the app's discovery parser. Instead of gracefully ignoring or merging the duplicate network advertisements, the parsing thread fell into an infinite lookup loop. This rapidly led to thread exhaustion, completely locking up the app's network stack and causing the setup application to crash.
 
 ### The Stabilization Strategy
-By implementing strict packet deduplication, stabilizing mDNS port collisions, and adding defensive packet validation on the device-side NanoHTTPD server, we resolved the race condition entirely. This boosted hub discovery success rates by 40% and established a rock-solid foundation for screenless smart-home onboarding.`,
+To fix this routing loop and harden the onboarding pipeline, we implemented a three-tiered network defense strategy:
+* **Strict Packet Deduplication**: We refactored the discovery parser to include a lightweight, memory-bounded sliding window cache. Incoming mDNS packets are fingerprinted, and identical duplicate broadcasts from the same subnet are dropped instantly before they can hit the validation engine.
+* **mDNS Port Collision Stabilization**: We updated the HubAdvertisingClient to dynamically detect and resolve port conflicts on the local interface. If a port is already bound by another device, the client cleanly negotiates an alternative socket rather than overlapping broadcasts.
+* **Defensive Server Validation**: We hardened the device-side NanoHTTPD server to defensively sanitize incoming request payloads and validate transport layers, ensuring that misconfigured or malicious packets are rejected early.
+
+**The Engineering Win**: Eliminating this parsing race condition completely solved the thread exhaustion bugs, boosting our smart hub discovery success rates by 40% and delivering a rock-solid, zero-touch onboarding experience for screenless devices.`,
     category: "Distributed Systems",
     readTime: "8 min read",
     date: "Nov 02, 2025"
@@ -270,57 +293,69 @@ export const personalInterestsData = {
   cosmos: [
     {
       id: "black-holes",
-      title: "Black Holes & Relativity",
+      title: "Schwarzschild Geometry & The Information Paradox",
       topic: "Cosmology" as const,
-      description: "My personal study logs exploring Hawking radiation, the informational paradox, and Schwarzschild geometry.",
+      description: "A theoretical study log exploring Schwarzschild metric singularities, the mathematical mechanics of Hawking radiation, and the Holographic Principle as a solution to information scrambling.",
       notes: [
-        "Event Horizon: The coordinate boundary where escape velocity equals light speed. Rs = 2GM/c².",
-        "The Information Paradox: Quantum mechanics requires information to be conserved (unitarity), but Hawking radiation suggests black holes evaporate completely. Where does the historical state data go?",
-        "Holographic Principle: Leonard Susskind proposed that 3D volume information is encoded on the 2D boundary of the event horizon, much like a hologram."
+        "Schwarzschild Geometry: Exploring the exact solution to Einstein's field equations for spherically symmetric mass, establishing the event horizon at Rs = 2GM/c² as a coordinate singularity, not a physical one.",
+        "The Information Paradox: Analyzing the conflict between the unitary evolution of quantum states (which requires information preservation) and black hole thermal evaporation. Hawking radiation suggests mass-energy loss is entirely thermodynamic and carries no historical data.",
+        "Holographic Principle: Synthesizing Susskind and 't Hooft's proposal that the 3D interior volume of spacetime can be fully mapped onto a 2D boundary on the event horizon, laying the groundwork for AdS/CFT gravity-gauge dualities."
       ],
       interactiveComponent: "gravity-well"
     },
     {
-      id: "quantum-superposition",
-      title: "Quantum Mechanics & Superposition",
+      id: "quantum-computing",
+      title: "Quantum Coherence, Linear Algebra & Bloch Spheres",
       topic: "Quantum Physics" as const,
-      description: "Notes exploring the linear algebra of qubits, Bloch spheres, and the absolute beauty of quantum coherence.",
+      description: "A mathematical synthesis of state vectors in Hilbert space, exploring quantum measurement, Bloch sphere geometry, and the delicate nature of wave-function collapse under external decoherence.",
       notes: [
-        "Qubits exist as a superposition state |ψ⟩ = α|0⟩ + β|1⟩, where α and β are complex amplitudes.",
-        "Entanglement represents a non-separable wave function. Measuring one particle collapses the state of both instantly, but transfers zero physical information faster than light.",
-        "Coherence is highly fragile. Any external thermal vibration or interaction collapses the quantum state, making qubit scaling an incredible hardware challenge."
+        "State Vector Representation: Mapping qubits in two-dimensional complex Hilbert spaces as a superposition state |ψ⟩ = α|0⟩ + β|1⟩, constrained by the normalization condition |α|² + |β|² = 1.",
+        "Quantum Measurement Problem: Studying the transition from deterministic unitary evolution to probabilistic wave-function collapse upon interacting with macroscopic thermodynamic systems, modeled using projection operators.",
+        "Coherence and Environmental Interaction: Investigating how phase relations between state coefficients dissipate into environmental degrees of freedom (decoherence), modeling the hardware hurdles of scaling physical quantum registers."
       ],
       interactiveComponent: "quantum-qubit"
     },
     {
-      id: "james-webb-discoveries",
-      title: "James Webb discoveries & Cosmology",
+      id: "smartphone-muon-detector",
+      title: "Atmospheric Muon Decay & CMOS Silicon Feasibility",
       topic: "Astrophysics" as const,
-      description: "Tracking gravitational lensing, red-shifted ancient galaxy structures, and deep field infrared captures.",
+      description: "A theoretical feasibility study analyzing how high-energy secondary cosmic ray particles (muons) interact with consumer CMOS camera sensors to deposit ionization charge.",
       notes: [
-        "Infrared Redshift: As space expands, ancient ultraviolet and visible starlight gets stretched into the infrared spectrum, which is fully observable by JWST.",
-        "Mature Early Galaxies: Observations show highly structured galaxies existing just 300M years after the Big Bang, challenging standard speed-of-formation models.",
-        "Exoplanet Spectroscopy: Measuring light filtering through planetary atmospheres to detect chemical biosignatures like methane and water vapor."
+        "Atmospheric Muon Origin: When high-energy primary cosmic protons collide with air molecules in the upper atmosphere, they trigger a shower of pions that decay into muons, traveling relativistically with a dilated lifetime.",
+        "CMOS Ionization Mechanics: Analyzing how a passing charged muon deposits energy in silicon via the Bethe-Bloch formula, creating a trace of electron-hole pairs that manifests as localized pixel charge spikes above the thermal noise floor.",
+        "Background Noise Calibration: Synthesizing statistical Poisson models to isolate true high-energy muon strikes from thermal dark currents (hot pixels) through strict temporal and spatial spatial clustering filters."
+      ],
+      interactiveComponent: "muon-detector"
+    },
+    {
+      id: "james-webb-discoveries",
+      title: "Deep Field Spectroscopy & Early Galaxy Evolution",
+      topic: "Astrophysics" as const,
+      description: "A study log analyzing infrared redshift tracking data from the James Webb Space Telescope, tracing gravitational lensing fields and structural evolution in early galaxy populations.",
+      notes: [
+        "Cosmic Infrared Redshift: Tracking the cosmological expansion of spacetime, which stretches ultraviolet and optical emission lines of primitive star clusters into the infrared bands (z > 10) targeted by JWST's NIRSpec.",
+        "Early Galaxy Structural Discrepancy: Synthesizing data on massive, highly organized spiral and disk galaxy structures discovered just 300-400 million years after the Big Bang, challenging standard hierarchical galaxy formation models.",
+        "Spectroscopic Abundance Mapping: Examining optical emission lines lensed by massive cluster fields to quantify metallicity and early chemical enrichment of gas clouds in the primordial universe."
       ]
     }
   ],
   art: [
     {
       id: "user-art-gaara",
-      title: "Gaara of the Sand",
+      title: "Gaara - Naruto Character",
       medium: "Pencil & Ink Sketch",
       description: "A hand-drawn pencil and ink sketch of Gaara, focusing on the character's signature intense expression and cracked sand armor texture.",
       year: "2024",
-      imageUrl: "/input_file_0.png",
+      imageUrl: "public/assets/gara.jpeg",
       category: "Sketches" as const
     },
     {
       id: "user-art-plants",
-      title: "Serene Botanicals",
+      title: "Little Garden",
       medium: "Digital Illustration (Tablet)",
       description: "A vibrant digital sketch of potted indoor plants and flowers on a shelf, experimenting with clean linework and bold block coloring.",
       year: "2025",
-      imageUrl: "/input_file_1.png",
+      imageUrl: "/public/assets/urge.jpeg",
       category: "Digital" as const
     },
     {
@@ -329,16 +364,7 @@ export const personalInterestsData = {
       medium: "Pencil Sketch",
       description: "A detailed hand-drawn pencil sketch of Gohan, highlighting sharp, classic anime linework and deep shading.",
       year: "2024",
-      imageUrl: "/input_file_3.png",
-      category: "Sketches" as const
-    },
-    {
-      id: "user-art-patterns",
-      title: "Geometric Cosmos",
-      medium: "Colored Fineliner Design",
-      description: "An intricate exploration of hand-drawn geometric patterns and symmetries, inspired by the mathematical structure of deep-sky alignments.",
-      year: "2025",
-      imageUrl: "/input_file_4.png",
+      imageUrl: "/public/assets/gohan.jpeg",
       category: "Sketches" as const
     },
     {
@@ -347,7 +373,34 @@ export const personalInterestsData = {
       medium: "Digital Painting",
       description: "A calm digital painting showing a full moon suspended in a starry night, reflecting a soft trail of light over gentle ocean waves.",
       year: "2025",
-      imageUrl: "/input_file_5.png",
+      imageUrl: "/public/assets/Nighty.jpeg",
+      category: "Digital" as const
+    },
+     {
+      id: "user-art-doodle",
+      title: "Random Doodle art",
+      medium: "Digital Painting",
+      description: "Stuck in an over-thinking zone.",
+      year: "2025",
+      imageUrl: "/public/assets/art.jpeg",
+      category: "Digital" as const
+    },
+    {
+      id: "user-walk-art",
+      title: "Under the same moon.",
+      medium: "Digital Painting",
+      description: "Stuck with you.",
+      year: "2025",
+      imageUrl: "/public/assets/walk.jpeg",
+      category: "Digital" as const
+    },
+    {
+      id: "user-art-doodle-2",
+      title: "Another stupid random doodle art",
+      medium: "Digital Painting",
+      description: "Stuck in an over-thinking zone.",
+      year: "2025",
+      imageUrl: "/public/assets/doodles.jpeg",
       category: "Digital" as const
     },
     {
@@ -424,7 +477,14 @@ export const milestonesTimeline: Milestone[] = [
   {
     year: "2024",
     title: "Entering Google Platform Cores",
-    event: "Relocated to Google Bangalore & Taiwan",
+    event: "Relocated to Bangalore",
+    description: "Contributed low-level optimization, multi-threaded rendering stability, and document performance to the Android platform in Bangalore and Hsinchu.",
+    type: "career"
+  },
+  {
+    year: "2024",
+    title: "Entering Google Home Platform",
+    event: "Relocated to Taiwan",
     description: "Contributed low-level optimization, multi-threaded rendering stability, and document performance to the Android platform in Bangalore and Hsinchu.",
     type: "career"
   },
@@ -432,7 +492,7 @@ export const milestonesTimeline: Milestone[] = [
     year: "2026",
     title: "Next Stop: Pricing & Analytics",
     event: "Joining Bloomberg Ireland",
-    description: "Relocating to Dublin, Ireland as an Incoming Senior Software Engineer on the Pricing & Analytics team next month.",
+    description: "Relocating to Dublin, Ireland as an Incoming Senior Software Engineer on the Pricing & Analytics team soon.",
     type: "career"
   }
 ];
@@ -449,8 +509,8 @@ export const quotesData: Quote[] = [
     category: "Philosophy"
   },
   {
-    text: "Distributed systems are systems where the failure of a computer you didn't even know existed can render your own computer unusable.",
-    author: "Leslie Lamport",
-    category: "Engineering"
+    text: "Learn something about everything and everything about something.",
+    author: "Thomas Huxley",
+    category: "Philosophy"
   }
 ];

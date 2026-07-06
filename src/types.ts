@@ -34,7 +34,7 @@ export interface ProjectItem {
   outcome: string;
   githubUrl?: string;
   demoUrl?: string;
-  category: "Distributed Systems" | "Backend" | "System Design" | "Android";
+  category: "Distributed Systems" | "Backend" | "System Design" | "Android" | "Cosmos";
 }
 
 export interface BlogPost {
