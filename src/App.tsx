@@ -1116,8 +1116,10 @@ export default function App() {
             </div>
 
             <div className="mt-5 flex justify-center">
-              <a
-                href="mailto:hardeepkaur.hkdev@gmail.com"
+              <a 
+                href="https://mail.google.com/mail/?view=cm&fs=1&to=hardeepkaur.hkdev@gmail.com"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="px-6 py-2.5 rounded-full bg-blue-500 hover:bg-blue-600 text-slate-100 font-medium text-xs uppercase tracking-wider transition-all inline-block cursor-pointer font-mono"
               >
                 Send Email
