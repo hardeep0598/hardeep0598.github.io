@@ -333,7 +333,7 @@ export default function App() {
                   transition={{ duration: 0.7, delay: 0.3 }}
                   className="text-slate-400 font-medium"
                 >
-                  Currently in Taiwan.Soon moving to Ireland.
+                  Currently in Taiwan. Soon moving to Ireland.
                 </motion.p>
 
                 <motion.p
@@ -554,7 +554,7 @@ export default function App() {
               </p>
               <p>
                 Outside of software engineering, I am endlessly fascinated by
-                cosmology, black holes, and general relativity.I spend my free
+                cosmology, black holes, and general relativity. I spend my free
                 time sketching, exploring astrophotography, and reading up on
                 deep - space physics.
               </p>
